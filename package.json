@@ -1,0 +1,30 @@
+{
+  "name": "free-read-excel",
+  "version": "1.0.0",
+  "description": "for freedom",
+  "main": "lib/index.js",
+  "type": "module",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "",
+    "build": "rm -rf lib && tsc --build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forget-forever/free-read-excel.git"
+  },
+  "author": "zml",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/forget-forever/free-read-excel/issues"
+  },
+  "homepage": "https://github.com/forget-forever/free-read-excel#readme",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "xlsx": ">=0.16.5"
+  }
+}
