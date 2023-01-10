@@ -1,15 +1,15 @@
 {
   "name": "free-read-excel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "for freedom",
   "main": "lib/index.js",
   "type": "module",
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "",
-    "build": "rm -rf lib && tsc --build"
+    "build": "rm -rf lib && tsc --build",
+    "docs": "typedoc src/index.ts",
+    "release": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
