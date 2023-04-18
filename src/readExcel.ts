@@ -9,6 +9,7 @@ import XLSX from 'xlsx';
 const readExcel = <Target extends Record<string, string | number>>(
   file?: Blob, 
   fieldMap?: Record<string, keyof Target>,
+  type?: "string" | "binary" | "base64" | "buffer" | "file" | "array",
 ) => {
   if (!file) {
     return Promise.resolve([])
@@ -18,7 +19,7 @@ const readExcel = <Target extends Record<string, string | number>>(
     fileReader.onload = event => {
       try {
         // 以二进制流方式读取得到整份excel表格对象
-        const workbook = XLSX.read(event.target?.result, { type: 'binary' });
+        const workbook = XLSX.read(event.target?.result, { type: type || 'binary' });
         if (!workbook.SheetNames.length) {
           reject(Error('文件内容不正确！'))
           return;
@@ -62,6 +63,7 @@ const readExcel = <Target extends Record<string, string | number>>(
         });
         resolve(values as Target[])
       } catch (e) {
+        console.error(e)
         // 这里可以抛出文件类型错误不正确的相关提示
         reject(Error('文件类型不正确！'))
       }

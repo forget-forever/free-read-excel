@@ -1,13 +1,14 @@
 {
   "name": "free-read-excel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "for freedom",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "type": "module",
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf lib && tsc --build",
+    "build": "rm -rf lib && tsc --build && tsc --module ES2015 --outDir es",
     "docs": "typedoc src/index.ts",
     "release": "npm run build && npm publish"
   },
