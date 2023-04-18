@@ -5,7 +5,7 @@ import XLSX from 'xlsx';
  * @param fieldMap 字段映射表, map的建会去做正则匹配，未匹配上的，不会出现在结果中
  * @returns 读取到的excel文件
  */
-const readExcel = (file, fieldMap) => {
+const readExcel = (file, fieldMap, type) => {
     if (!file) {
         return Promise.resolve([]);
     }
@@ -15,7 +15,7 @@ const readExcel = (file, fieldMap) => {
             var _a;
             try {
                 // 以二进制流方式读取得到整份excel表格对象
-                const workbook = XLSX.read((_a = event.target) === null || _a === void 0 ? void 0 : _a.result, { type: 'binary' });
+                const workbook = XLSX.read((_a = event.target) === null || _a === void 0 ? void 0 : _a.result, { type: type || 'binary' });
                 if (!workbook.SheetNames.length) {
                     reject(Error('文件内容不正确！'));
                     return;
@@ -50,6 +50,7 @@ const readExcel = (file, fieldMap) => {
                 resolve(values);
             }
             catch (e) {
+                console.error(e);
                 // 这里可以抛出文件类型错误不正确的相关提示
                 reject(Error('文件类型不正确！'));
             }
